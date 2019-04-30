@@ -1,4 +1,4 @@
-package questions.RemoveDuplicatesfromSortedArray_26;
+package questions.RemoveDuplicatesfromSortedArray_0026;
 
 /*
 * source: https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/

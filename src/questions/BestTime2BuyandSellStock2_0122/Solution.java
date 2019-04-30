@@ -1,5 +1,8 @@
-package questions.BestTime2BuyandSellStock2_122;
-
+package questions.BestTime2BuyandSellStock2_0122;
+/*
+ * source: https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/
+ *
+ * */
 public class Solution {
     public int maxProfit(int[] prices) {
         int profit = 0;
