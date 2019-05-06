@@ -1,4 +1,4 @@
-package questions.singleNumber;
+package questions.singleNumber_136;
 
 import java.util.Arrays;
 
@@ -50,9 +50,10 @@ public class Solution {
     }
     // 异或方法
     /*
-    * a^b = b^a
-    * 0^a = a
-    * a^a = 0
+    * 异或的规律:
+    * 1.a^b = b^a
+    * 2.0^a = a
+    * 3.a^a = 0
     * [1,2,3,1,2,3,4] => 1^1^2^2^3^3^4 = 4;
     * */
     public static int singleNumber3(int[] nums) {
