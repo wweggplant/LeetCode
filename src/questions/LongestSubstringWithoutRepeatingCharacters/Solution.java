@@ -1,6 +1,8 @@
 package src.questions.LongestSubstringWithoutRepeatingCharacters;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 /*
  * @lc app=leetcode.cn id=3 lang=java
@@ -66,6 +68,9 @@ class Solution {
         }
         return max;
     }
+    /*
+        使用Set作为滑动窗口, 滑动窗口的关键在于如何设计start
+    */
     public static int lengthOfLongestSubstring2(String s) {
         Set<Character> set = new HashSet<Character>();
         int i = 0, j = 0, max = 0, n = s.length();
@@ -79,14 +84,32 @@ class Solution {
         }
         return max;
     }
-    // 2
+    /**
+     * 使用Set的滑动窗口,需要对每一个i进行检查. 实际上检查过得子串可以直接从重复的地方开始计算start
+     * 使用Map<String, Integer> 记录start的位置
+     */
     public static int lengthOfLongestSubstring3(String s) {
-        return 0;
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        int i = 0, j = 0, max = 0 , n = s.length();
+        while(j < n) {
+            if (map.containsKey(s.charAt(j))){
+                i = Math.max(map.get(s.charAt(j)), i);
+            }
+            max = Math.max(j - i + 1, max);
+            map.put(s.charAt(j), j++ + 1);
+        }
+        return max;
     }
     public static void main(String[] args) {
         assert 3 == Solution.lengthOfLongestSubstring("abcabcbb");
         assert 1 == Solution.lengthOfLongestSubstring("bbbbbbbbb");
         assert 3 == Solution.lengthOfLongestSubstring("pwwkew");
+        assert 3 == Solution.lengthOfLongestSubstring2("abcabcbb");
+        assert 1 == Solution.lengthOfLongestSubstring2("bbbbbbbbb");
+        assert 3 == Solution.lengthOfLongestSubstring2("pwwkew");
+        assert 3 == Solution.lengthOfLongestSubstring3("abcabcbb");
+        assert 1 == Solution.lengthOfLongestSubstring3("bbbbbbbbb");
+        assert 3 == Solution.lengthOfLongestSubstring3("pwwkew");
         System.out.println("end");
     }
 }
