@@ -4,20 +4,9 @@
             "type": "java",
             "name": "CodeLens (Launch) - Solution",
             "request": "launch",
-            "mainClass": "src.questions.LongestSubstringWithoutRepeatingCharacters.Solution"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Solution",
-            "request": "launch",
-            "mainClass": "src.questions.无重复字符的最长子串.Solution"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Solution",
-            "request": "launch",
-            "mainClass": "src.questions.无重复字符的最长子串.Solution",
-            "projectName": "LeetCode_71c09ab"
+            "mainClass": "Solution",
+            "projectName": "LeetCode_10f1f9cf",
+            "vmArgs": "-enableassertions"
         }
     ]
 }
