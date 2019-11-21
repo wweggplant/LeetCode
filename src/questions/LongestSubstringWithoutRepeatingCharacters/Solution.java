@@ -100,6 +100,31 @@ class Solution {
         }
         return max;
     }
+    // 错误方法1: 这个错误的方法问题在于错误的认为找到的子数组就是最大子序列
+    public static int errorLengthOfLongestSubstring1(String s) {
+        char[] array = s.toCharArray();
+        Set<Character> set = new HashSet<Character>();
+        int max = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (!set.contains(array[i]))
+                set.add(array[i]);
+        }
+        char[] subQue = set.toArray();
+        int i = 1, j = 1, start = 0, end = 0;
+        while(i < subQue.length){
+            if (subQue[i] == array[j]){
+                if (i - start > end - start) {
+                    start = end;
+                    end = i;
+                }
+                j++;
+                i++;
+            } else {
+                j++;
+            }
+        }
+        return end - start + 1;
+    } 
     public static void main(String[] args) {
         assert 3 == Solution.lengthOfLongestSubstring("abcabcbb");
         assert 1 == Solution.lengthOfLongestSubstring("bbbbbbbbb");
