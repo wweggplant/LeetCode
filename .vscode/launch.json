@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "Solution",
+            "projectName": "LeetCode_10f1f9cf",
+            "vmArgs": "-enableassertions"
+        }
+    ]
+}
