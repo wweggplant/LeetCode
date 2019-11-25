@@ -39,19 +39,32 @@ class Solution {
             return intervals;
         }
         sort(intervals);
-        int i = 1, j = 0, start = intervals[i][0], end = intervals[i][1], n = intervals.length;
+        int i = 1, j = 0, start = intervals[0][0], end = intervals[0][1], n = intervals.length;
         int[][] mergeArray = new int[n][];
+        int[][] mergeArrayResult;
         while (i < n) {
             if (intervals[i][0] > end) {
                 mergeArray[j++] = new int[] { start, end };
                 start = intervals[i][0];
                 end = intervals[i][1];
-            } else if (intervals[i][0] < end && intervals[i][1] > end) {
+            } else if (intervals[i][0] <= end && intervals[i][1] > end) {
                 end = intervals[i][1];
+            }
+            if (i == n - 1) {
+                mergeArray[j] = new int[] { start, end };
             }
             i++;
         }
-        return mergeArray;
+        int length = j+1;
+        if(length > 0) {
+            mergeArrayResult = new int[length][];
+        } else {
+            return new int[0][];
+        }
+        for(int k = 0;k<length;k++) {
+            mergeArrayResult[k] = mergeArray[k];
+        }
+        return mergeArrayResult;
     }
 
     private static Random rand = new Random();
@@ -120,13 +133,19 @@ class Solution {
         }
         return true;
     }
+    private static void show(int[][] a) {
+        for (int i = 0; i < a.length; i++) {
+            System.out.print("a["+i+"][0]:"+a[i][0]+", a["+i+"][1]:"+a[i][1]+";");
+        }
+        System.out.println();
+    }
     public static void main(String[] args) {
-        int[][] arr = new int[][] { { 2, 6 }, { 15, 18 }, { 1, 3 }, { 8, 10 } };
-        sort(arr);
-        assert isSort(arr);
-        System.out.println("排序成功");
-        int[][] a = merge(arr);
-        System.out.println(a.length);
+        // sort( new int[][] { { 2, 6 }, { 15, 18 }, { 1, 3 }, { 8, 10 } });
+        // assert isSort(arr);
+        // System.out.println("排序成功");
+        show(merge(new int[][] { { 2, 6 }, { 15, 18 }, { 1, 3 }, { 8, 10 } }));
+        show(merge(new int[][] {{1,4},{4,5}}));
+        
     }
 }
 // @lc code=end
