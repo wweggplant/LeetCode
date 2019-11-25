@@ -4,6 +4,14 @@
             "type": "java",
             "name": "CodeLens (Launch) - Solution",
             "request": "launch",
+            "mainClass": "Solution",
+            "projectName": "LeetCode_10f1f9cf",
+            "vmArgs": "-enableassertions"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
             "mainClass": "src.questions.LongestSubstringWithoutRepeatingCharacters.Solution",
             "vmArgs": "-enableassertions"
         }
