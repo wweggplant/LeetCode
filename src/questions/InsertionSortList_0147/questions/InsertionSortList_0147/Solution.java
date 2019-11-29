@@ -67,7 +67,7 @@ class Solution {
         }
     };
     // 使用list默认的排序,跑两趟完成
-    public ListNode insertionSortList(ListNode head) {
+    public ListNode insertionSortList2(ListNode head) {
         ArrayList<Integer> list = new ArrayList<Integer>();
         ListNode node = head;
         while (node !=null) {
@@ -81,6 +81,27 @@ class Solution {
             node.val = list.get(i++);
             node = node.next;
         }
+        return head;
+    }
+    /*
+     回溯法
+    */
+    public static ListNode insertionSortList(ListNode head) {
+        ListNode n = null;
+        ListNode t = head;
+        while (t != null) {
+            ListNode next = t.next;
+            n = insertioinNode(n, t);
+            t = next;
+        }
+        return n;
+    }
+    public static ListNode insertioinNode(ListNode head, ListNode node) {
+        if (head == null || head.val > node.val){
+            node.next = head;
+            return node;
+        }
+        head.next = insertioinNode(head.next, node);
         return head;
     }
     public static class ListNode {
@@ -109,7 +130,7 @@ class Solution {
         n4.next = n2;
         n2.next = n1;
         n1.next = n3;
-        s.insertionSortList(n4);
+        n4 = s.insertionSortList(n4);
         assert isSort(n4);
         System.out.println("插入排序完成");
     }
