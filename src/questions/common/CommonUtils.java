@@ -20,4 +20,14 @@ public class CommonUtils<T> {
         }
         return true;
     }
+    
+    public static ListNode Arrays2ListNode(int[] array) {
+        ListNode head = new ListNode(0);
+        ListNode tail = head;
+        for (int i : array) {
+            tail.next = new ListNode(i);
+            tail = tail.next;
+        }
+        return head.next;
+    }
 }

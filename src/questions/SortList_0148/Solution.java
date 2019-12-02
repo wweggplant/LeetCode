@@ -75,23 +75,55 @@ class Solution {
         n.next = left != null ? left : right;
         return res.next;
     }
+    public ListNode cut(ListNode start, int size) {
+        ListNode n = start;
+        while(--size > 0 && n != null) {
+            n = n.next;
+        }
+        if (n == null) return null;
+        ListNode next = n.next;
+        n.next = null;
+        return next;
+    }
     public boolean less(ListNode a, ListNode b) {
         return (int)a.val < (int)b.val;
     }
-    // 参考解法2 自底向上
-    // public ListNode sortList2(ListNode head) {
-    //     int length = 0;
-    //     ListNode h = head;
-    //     ListNode res = new ListNode(0);
-    //     // 获得总的长度
-    //     while (h != null) {
-    //         h = h.next;
-    //         length++;
-    //     }
-    //     for (int size = 1; size <= length ; size += size) {
-            
-    //     }
-    // }
+    
+    /**
+     * 参考解法2 自底向上
+     * -1->5->3->4->0 curr:当前操作的节点
+     * 1. size = 1,2,4,5..... <length
+     * 2. right <= cut(h, size) curr <= cut(right, size) 下一个要操作的节点
+     * 3. merge(left,right)
+     * 4 tail => 处理好的结尾的节点
+     * @param head
+     * @return
+     */
+    public  ListNode sortList2(ListNode head) {
+        int length = 0;
+        ListNode res = new ListNode(0);
+        ListNode h = head;
+        res.next = head;
+        // 获得总的长度
+        while (h != null) {
+            h = h.next;
+            length++;
+        }
+        for (int size = 1; size < length ; size += size) {
+            h = res.next;
+            ListNode tail = res;
+            while(h != null){
+                ListNode left = h;
+                ListNode right = cut(left, size);
+                h = cut(right, size);
+                tail.next = merge(left, right);
+                while(tail.next != null) {
+                    tail = tail.next;
+                }
+            }
+        }
+        return res.next;
+    }
     public static void main(String[] args) {
         Solution s = new Solution();
         ListNode n1 = new ListNode(1);
@@ -101,8 +133,10 @@ class Solution {
         n4.next = n2;
         n2.next = n1;
         n1.next = n3;
+        ListNode l1 = CommonUtils.Arrays2ListNode(new int[]{-1,5,3,4,0});
         ListNode res = s.sortList(n4);
-        assert CommonUtils.isSort(res);
+        l1 = s.sortList(l1);
+        assert CommonUtils.isSort(l1);
         System.out.print("排序完成");
     }
 }
