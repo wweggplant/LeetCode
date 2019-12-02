@@ -1,3 +1,5 @@
+package questions.MergeIntervals;
+
 import java.util.Random;
 
 /*

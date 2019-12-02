@@ -1,4 +1,4 @@
-package questions.SortColors;
+package questions.SortColors_0075;
 
 /*
  * @lc app=leetcode.cn id=75 lang=java

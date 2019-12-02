@@ -10,4 +10,14 @@ public class CommonUtils<T> {
         str += "]";
         System.out.println(str);
     }
+    public static boolean isSort(ListNode head) {
+        ListNode node = head;
+        while (node != null) {
+            ListNode next = node.next;
+            if (next != null && (int)next.val < (int)node.val) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

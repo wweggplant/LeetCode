@@ -1,3 +1,4 @@
+package questions.LongestSubstringWithoutRepeatingCharacters_0003;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -100,7 +101,7 @@ class Solution {
         return max;
     }
     // 错误方法1: 这个错误的方法问题在于错误的认为找到的子数组就是最大子序列
-    public static int errorLengthOfLongestSubstring1(String s) {
+    /* public static int errorLengthOfLongestSubstring1(String s) {
         char[] array = s.toCharArray();
         Set<Character> set = new HashSet<Character>();
         int max = 0;
@@ -123,7 +124,7 @@ class Solution {
             }
         }
         return end - start + 1;
-    } 
+    }  */
     public static void main(String[] args) {
         assert 3 == Solution.lengthOfLongestSubstring("abcabcbb");
         assert 1 == Solution.lengthOfLongestSubstring("bbbbbbbbb");

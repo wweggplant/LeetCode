@@ -1,6 +1,7 @@
 package questions.SortList_0148;
 
-import src.common.ListNode;
+import questions.common.CommonUtils;
+import questions.common.ListNode;
 /*
  * @lc app=leetcode.cn id=148 lang=java
  *
@@ -41,51 +42,59 @@ import src.common.ListNode;
  * }
  */
 class Solution {
+    // 参考解法1 自顶向下
     public ListNode sortList(ListNode head) {
-        ListNode n = head;
-        for (int size = 1; n != null; size +=size) {
-            for (int i = 0; i < array.length; i++) {
-                
-            }
+        if(head == null || head.next == null ) {
+            return head;
         }
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        ListNode temp = slow.next;
+        slow.next = null;
+        ListNode left = sortList(head);
+        ListNode right = sortList(temp);
+        return merge(left, right);
     }
-    public void merge(ListNode lo, ListNode hi) {
-        // int i = 0 ,k = 0, mid = size - 1, j = mid + 1, hi = 2 * size - 1;
-        // ListNode n = head;
-        // ListNode midNode = head;
-        // ListNode hiNode = null;
-        // ListNode loNode = head;
-        // // 找到中点
-        // while(i < size - 1){
-        //     midNode = midNode.next;
-        // }
-        // hiNode = midNode.next;
-        // i = 0;
+    public ListNode merge(ListNode left, ListNode right) {
         ListNode res = new ListNode(0);
-        while(lo != null || hi != null ){
-            if(lo == null) {
-                res.next = hi;
-                hi = hi.next;
-            } else if (hi == null){
-                res.next = lo;
-                lo = lo.next;
-            } else if (less(hi, lo)) {
-                res.next = hi;
-                hi = hi.next;
+        ListNode n = res;
+        while(left != null && right != null ){
+            if (less(right, left)) {
+                n.next = right;
+                right = right.next;
             } else {
-                res.next = lo;
-                lo = lo.next;
+                n.next = left;
+                left = left.next;
             }
+            n = n.next;
         }
+        n.next = left != null ? left : right;
         return res.next;
     }
     public void exch(ListNode a, ListNode b) {
-        int temp = a.val;
+        int temp = (int) a.val;
         a.val = b.val;
         b.val = temp;
     }
-    public void less(ListNode a, ListNode b) {
-        return a.val < b.val;
+    public boolean less(ListNode a, ListNode b) {
+        return (int)a.val < (int)b.val;
+    }
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        ListNode n1 = new ListNode(1);
+        ListNode n2 = new ListNode(2);
+        ListNode n3 = new ListNode(3);
+        ListNode n4 = new ListNode(4);
+        n4.next = n2;
+        n2.next = n1;
+        n1.next = n3;
+        ListNode res = s.sortList(n4);
+        assert CommonUtils.isSort(res);
+        System.out.print("排序完成");
     }
 }
 // @lc code=end
