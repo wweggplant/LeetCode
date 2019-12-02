@@ -75,14 +75,23 @@ class Solution {
         n.next = left != null ? left : right;
         return res.next;
     }
-    public void exch(ListNode a, ListNode b) {
-        int temp = (int) a.val;
-        a.val = b.val;
-        b.val = temp;
-    }
     public boolean less(ListNode a, ListNode b) {
         return (int)a.val < (int)b.val;
     }
+    // 参考解法2 自底向上
+    // public ListNode sortList2(ListNode head) {
+    //     int length = 0;
+    //     ListNode h = head;
+    //     ListNode res = new ListNode(0);
+    //     // 获得总的长度
+    //     while (h != null) {
+    //         h = h.next;
+    //         length++;
+    //     }
+    //     for (int size = 1; size <= length ; size += size) {
+            
+    //     }
+    // }
     public static void main(String[] args) {
         Solution s = new Solution();
         ListNode n1 = new ListNode(1);

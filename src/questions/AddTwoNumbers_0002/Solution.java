@@ -5,7 +5,7 @@ import questions.common.ListNode;
 *
 * */
 public class Solution {
-    public ListNode<Integer> addTwoNumbers(ListNode l1, ListNode l2) {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode p1 = l1;
         ListNode p2 = l2;
         ListNode list  = new ListNode(0);
