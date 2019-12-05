@@ -35,7 +35,7 @@ package questions.LongestPalindromicSubstring_0005;
 // @lc code=start
 class Solution {
     // 回文理解错误, abcba是回文,正读反读都一样
-    /* public String longestPalindrome(String s) {
+    public String longestPalindrome(String s) {
         if (s == null) return null;
         if ("".equals(s)) return "";
         int i = 0 , j = 1, length = s.length();
@@ -56,7 +56,7 @@ class Solution {
             return maxStr.substring(0,1);
         }
         return maxStr;
-    } */
+    }
     public static void main(String[] args) {
         Solution s = new Solution();
         assert s.longestPalindrome("babad").equals("bab");
@@ -70,4 +70,3 @@ class Solution {
     }
 }
 // @lc code=end
-

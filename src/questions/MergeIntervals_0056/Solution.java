@@ -1,4 +1,4 @@
-package questions.MergeIntervals;
+package questions.MergeIntervals_0056;
 
 import java.util.Random;
 
