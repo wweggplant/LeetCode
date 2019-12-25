@@ -9,7 +9,8 @@ public class CommonUtils<T> {
         for (int i = 0; i < arrays.length; i++) {
             str +=arrays[i] + ",";
         }
-        str += str.substring(0, str.length() - 1);
+        if(arrays.length > 0)
+            str = str.substring(0, str.length() - 1);
         str += "]";
         System.out.println(str);
     }

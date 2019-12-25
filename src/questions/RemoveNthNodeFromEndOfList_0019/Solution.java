@@ -1,6 +1,10 @@
 package questions.RemoveNthNodeFromEndOfList_0019;
 
 import questions.common.ListNode;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import questions.common.CommonUtils;
 
 /*
@@ -44,7 +48,7 @@ import questions.common.CommonUtils;
  */
 class Solution {
     // 扫描两次
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
         int l = 0, m = 0;
         ListNode h = new ListNode(0);
         h.next = head;
@@ -66,10 +70,45 @@ class Solution {
         }
         return h.next;
     }
+    // 双指针的妙用
+    public ListNode removeNthFromEnd(ListNode head, int n){
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode first = dummy;
+        ListNode second = dummy;
+        for (int i = 0; i < n + 1; i++) {
+            first = first.next;
+        }
+        while (first != null) {
+            first = first.next;
+            second = second.next;
+        }
+        second.next = second.next.next;
+        return dummy.next;
+    }
+    // 使用ArrayList
+    public ListNode removeNthFromEnd3(ListNode head, int n) {
+        List<ListNode> list = new ArrayList<ListNode>();
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode node = dummy;
+        while (node != null) {
+            list.add(node);
+            node = node.next;
+        }
+        int l = list.size();
+        node = list.get(l - n - 1);
+        if (node.next.next != null) {
+            node.next = node.next.next;
+        } else {
+            node.next = null;
+        }
+        return dummy.next;
+    }
     public static void main(String[] args) {
         Solution s = new Solution();
         CommonUtils<Integer> utils = new CommonUtils<Integer>();
-        ListNode l = utils.Arrays2ListNode(new int[]{1});
+        ListNode l = utils.Arrays2ListNode(new int[]{1,2,3,4,5});
         Integer[] a1 = utils.ListNode2Arrays(s.removeNthFromEnd(l, 2));
         utils.showArrays(a1);
     }
