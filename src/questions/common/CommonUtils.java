@@ -1,6 +1,7 @@
 package questions.common;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CommonUtils<T> {
@@ -13,6 +14,9 @@ public class CommonUtils<T> {
             str = str.substring(0, str.length() - 1);
         str += "]";
         System.out.println(str);
+    }
+    public Integer[] int2Integer(int[] a) {
+        return Arrays.stream(a).boxed().toArray(Integer[]::new);
     }
     public static boolean isSort(ListNode head) {
         ListNode node = head;

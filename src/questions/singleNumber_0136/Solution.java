@@ -1,4 +1,4 @@
-package questions.singleNumber_0136;
+package questions.SingleNumber_0136;
 
 import java.util.Arrays;
 
