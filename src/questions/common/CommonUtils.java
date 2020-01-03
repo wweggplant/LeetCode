@@ -15,6 +15,16 @@ public class CommonUtils<T> {
         str += "]";
         System.out.println(str);
     }
+    public void showArrays(List<T> arrays) {
+        String str = "[";
+        for (int i = 0; i < arrays.size(); i++) {
+            str += arrays.get(i) + ",";
+        }
+        if (arrays.size() > 0)
+            str = str.substring(0, str.length() - 1);
+        str += "]";
+        System.out.println(str);
+    }
     public Integer[] int2Integer(int[] a) {
         return Arrays.stream(a).boxed().toArray(Integer[]::new);
     }
