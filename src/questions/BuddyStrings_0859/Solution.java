@@ -86,12 +86,33 @@ class Solution {
         }
         return result;
     }
+    /* 
+        1. 通过count来计数不同char的位置来体现亲密字符串已经比较接近正确答案了，但是忽略了 "abcaa", "abcbb"
+        2. 字符相同的情况下，也有不符合的情况的处理 "ab" vs "ab"
+    */
     public boolean buddyStrings(String A, String B) {
-        String keyA = getBuddyKey(A);
-        String keyB = getBuddyKey(B);
-        if (!keyA.equals(keyB)) return false;
-        if (A.equals(B)) return false;
-        else return true;
+        if (A.length() != B.length()) return false;
+        if(A.equals(B)) {
+            int[] alphabet = new int[26];
+            for (int j = 0; j < A.length(); j++) {
+                int index = A.charAt(j) - 'a';
+                int val = alphabet[index];
+                if (val > 0) return true;
+                else alphabet[index]++;
+            }
+            return false;
+        } else {
+            int first = -1, second = -1,i = 0, l = A.length();
+            while (i < l) {
+                if (A.charAt(i) != B.charAt(i)){
+                    if (second > 0) return false;
+                    else if(first >= 0) second = i;
+                    else first = i;
+                }
+                i++;
+            }
+            return A.charAt(first) == B.charAt(second) && A.charAt(second) == B.charAt(first);
+        }
     }
     public static void main(String[] args) {
         Solution s = new Solution();
@@ -100,6 +121,7 @@ class Solution {
         assert s.buddyStrings("aa", "aa");
         assert s.buddyStrings("aaaaaaabc", "aaaaaaacb");
         assert !s.buddyStrings("", "aa");
+        assert !s.buddyStrings("abcaa", "abcbb");
     }
 }
 // @lc code=end
