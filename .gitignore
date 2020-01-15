@@ -1,3 +1,4 @@
 .idea/
 LeetCode.iml
 .vscode/launch.json
+*.class

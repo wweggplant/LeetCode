@@ -1,87 +1,11 @@
 {
+    "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - Solution",
+            "name": "Debugger (Launch) - Current File",
             "request": "launch",
-            "mainClass": "questions.FindFirstAndLastPositionOfElementInSortedArray_0034.Solution",
-            "projectName": "LeetCode_10f1f9cf",
-            "vmArgs": "-enableassertions"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Solution",
-            "request": "launch",
-            "mainClass": "questions.SwapNodesInPairs_0024.Solution",
-            "projectName": "LeetCode_10f1f9cf",
-            "vmArgs": "-enableassertions"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Solution",
-            "request": "launch",
-            "mainClass": "questions.RemoveNthNodeFromEndOfList_0019.Solution",
-            "projectName": "LeetCode_10f1f9cf",
-            "vmArgs": "-enableassertions"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Solution",
-            "request": "launch",
-            "mainClass": "questions.ThreeSumClosest_0006.Solution",
-            "projectName": "LeetCode_10f1f9cf",
-            "vmArgs": "-enableassertions"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Solution",
-            "request": "launch",
-            "mainClass": "questions.ContainerWithMostWater_0011.Solution",
-            "vmArgs": "-enableassertions"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Solution",
-            "request": "launch",
-            "mainClass": "questions.ZigzagConversion_0006.Solution",
-            "projectName": "LeetCode_10f1f9cf",
-            "vmArgs": "-enableassertions"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Solution",
-            "request": "launch",
-            "mainClass": "questions.LongestPalindromicSubstring_0005.Solution",
-            "projectName": "LeetCode_10f1f9cf",
-            "vmArgs": "-enableassertions"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Solution",
-            "request": "launch",
-            "mainClass": "questions.SortList_0148.Solution",
-            "projectName": "LeetCode_10f1f9cf"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Solution",
-            "request": "launch",
-            "mainClass": "questions.InsertionSortList_0147.Solution",
-            "projectName": "LeetCode_10f1f9cf"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Solution",
-            "request": "launch",
-            "mainClass": "Solution",
-            "projectName": "LeetCode_10f1f9cf",
-            "vmArgs": "-enableassertions"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Solution",
-            "request": "launch",
-            "mainClass": "src.questions.LongestSubstringWithoutRepeatingCharacters.Solution",
+            "mainClass": "${file}",
             "vmArgs": "-enableassertions"
         }
     ]
