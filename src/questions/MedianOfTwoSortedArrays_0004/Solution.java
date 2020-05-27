@@ -63,7 +63,22 @@ class Solution {
             return  list[list.length / 2];
         }
     } */
+
+    /*
+     * 折半删除法, 用反证法可以证明
+     * 设n < m, n,m为A,B的长度, k为合并数组的所求的中间索引,所对应的的元素为K, 假设K在要删除的一侧
+     * 
+     * 则有k = (n+m)/2
+     * 
+     * 对于A至多(n - k/2)个比K大的数, B至少(m - k/2)个比K大的数, 设x为比K大的数,且有x = (n+m)/2,
+     * 
+     * 由上可得, x >  n+m-k = (n+m)/2, 与已知明显矛盾, 所以假设不
+     * 
+     */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int l = nums1.length + nums2.length;
+        int k = l/2;
+        
     }
 }
 // @lc code=end
