@@ -1,8 +1,9 @@
 {
+    "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - Solution",
+            "name": "Debugger (Launch) - Current File",
             "request": "launch",
             "mainClass": "questions.BuddyStrings_0859.Solution",
             "projectName": "LeetCode_71c09ab",
@@ -90,6 +91,7 @@
             "name": "CodeLens (Launch) - Solution",
             "request": "launch",
             "mainClass": "src.questions.LongestSubstringWithoutRepeatingCharacters.Solution",
+            "mainClass": "${file}",
             "vmArgs": "-enableassertions"
         }
     ]
