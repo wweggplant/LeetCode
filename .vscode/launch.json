@@ -4,6 +4,14 @@
             "type": "java",
             "name": "CodeLens (Launch) - Solution",
             "request": "launch",
+            "mainClass": "questions.BuddyStrings_0859.Solution",
+            "projectName": "LeetCode_71c09ab",
+            "vmArgs": "-enableassertions"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
             "mainClass": "questions.FindFirstAndLastPositionOfElementInSortedArray_0034.Solution",
             "projectName": "LeetCode_10f1f9cf",
             "vmArgs": "-enableassertions"
