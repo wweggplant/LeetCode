@@ -1,5 +1,7 @@
 package questions.ValidateBinarySearchTree_0098;
 
+import java.util.Stack;
+
 import questions.common.*;
 /*
  * @lc app=leetcode.cn id=98 lang=java
@@ -57,6 +59,7 @@ import questions.common.*;
  * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 class Solution {
+    /* 
     private boolean res = true;
     public boolean isValidBST(TreeNode root) {
         traverse(root);
@@ -79,6 +82,28 @@ class Solution {
             traverse(left);
             traverse(right);
         }
+    }
+    */
+    /* 
+        思路1: 使用栈,递归BST树, 按照中序遍历把所有的节点放入栈里。然后检查栈里数据的顺序是否是从大到小排列。
+        可以优化的点：在中序遍历的过程中，可以对当前节点进行局部范围检测，提前找出局部不满足的节点。
+
+        根据官方提示, 在中序遍历的过程中,如果是BST,那么当前节点的值必然大于上一个遍历的节点的值
+    */
+    public boolean isValidBST(TreeNode root) {
+        Stack<TreeNode> stack = new Stack();
+        double inorder = - Double.MAX_VALUE;
+        while (!stack.isEmpty() || root != null) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if (root.val <= inorder) return false;
+            inorder = root.val;
+            root = root.right;
+        }
+        return true;
     }
 }
 // @lc code=end
