@@ -3,7 +3,6 @@ package questions.CombinationSum_0039;
 import java.util.ArrayList;
 import java.util.List;
 
-import questions.common.*;
 /*
  * @lc app=leetcode.cn id=39 lang=java
  *

@@ -1,6 +1,7 @@
 package questions.ValidateBinarySearchTree_0098;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 import questions.common.*;
 /*
@@ -91,7 +92,7 @@ class Solution {
         根据官方提示, 在中序遍历的过程中,如果是BST,那么当前节点的值必然大于上一个遍历的节点的值
     */
     public boolean isValidBST(TreeNode root) {
-        Stack<TreeNode> stack = new Stack();
+        Deque<TreeNode> stack = new ArrayDeque();
         double inorder = - Double.MAX_VALUE;
         while (!stack.isEmpty() || root != null) {
             while (root != null) {

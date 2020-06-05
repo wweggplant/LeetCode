@@ -44,7 +44,7 @@ import java.util.Map;
 
 // @lc code=start
 class Solution {
-    private Map<String, List<String>> map = new HashMap<String, List<String>>();
+    private Map<String, List<String>> map = new HashMap<>();
     // 方法一：排序数组分类
     public List<List<String>> groupAnagrams(String[] strs) {
         for (int i = 0; i < strs.length; i++) {
@@ -54,12 +54,12 @@ class Solution {
             if(map.containsKey(key))
                 list = map.get(key);
             else {
-                list = new ArrayList<String>();
+                list = new ArrayList<>();
                 map.put(key, list);
             }
             list.add(str);
         }
-        List<List<String>> res = new ArrayList<List<String>>();
+        List<List<String>> res = new ArrayList<>();
         map.forEach((key, list) -> {
             res.add(list);
         });
@@ -69,13 +69,6 @@ class Solution {
         char[] chars = str.toCharArray();
         Arrays.sort(chars);
         return String.valueOf(chars);
-    }
-    public static void main(String[] args) {
-        Solution s = new Solution();
-        // String a = s.sortByAlphabet("cba");
-        // assert a.equals("abc");
-        String[] str1 = {"eat", "tea", "tan", "ate", "nat", "bat"};
-        List<List<String>> list = s.groupAnagrams(str1);
     }
 }
 // @lc code=end
