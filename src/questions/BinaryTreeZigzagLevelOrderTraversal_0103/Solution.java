@@ -1,6 +1,8 @@
 package questions.BinaryTreeZigzagLevelOrderTraversal_0103;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 import questions.common.TreeNode;
 /*
@@ -47,45 +49,56 @@ import questions.common.TreeNode;
  * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 class Solution {
-    public List<List<Integer>> zigzagLevelOrder(TreeNode node) {
-        Deque<TreeNode> deque = new LinkedList<>();
-        List<List<Integer>> list = new LinkedList<>();
-        boolean fromHead = true;
-        deque.offer(node);
-        while(!deque.isEmpty()){
-            List<Integer> l = new LinkedList<>();
-            int currentSize = deque.size();
-            int i = 0;
-            while(!deque.isEmpty() && currentSize > i) {
-                TreeNode n = deque.poll();
-                if(n == null) continue;
-                l.add(n.val);
-                if (fromHead) {
-                    deque.push(n.left);
-                    deque.push(n.right);
-                } else {
-                    deque.offer(n.right);
-                    deque.offer(n.left);
-                }
-                i++;
-            }
-            fromHead = !fromHead;
-            if (l.size() > 0)
-                list.add(l);
+    public List<List<Integer>> zigzagLevelOrder(final TreeNode node) {
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        Deque<TreeNode> tempStack = new ArrayDeque<>();
+        List<List<Integer>> list = new ArrayList<>();
+        boolean fromLeft = true;
+        if (node != null)
+            stack.push(node);
+        while(!stack.isEmpty() || !tempStack.isEmpty()){
+            List<Integer> l = new ArrayList<>();
+            this.stackMove(stack, tempStack, !fromLeft, l);
+            this.tempStackMove(tempStack, stack, fromLeft, l);
+            fromLeft = !fromLeft;
+            list.add(l);
         }
         return list;
     }
-    public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        TreeNode t1 = new TreeNode(2);
-        TreeNode t2 = new TreeNode(3);
-        TreeNode t3 = new TreeNode(4);
-        TreeNode t4 = new TreeNode(5);
-        root.left = t1;
-        root.right = t2;
-        t1.left = t3;
-        t2.right = t4;
-        new Solution().zigzagLevelOrder(root);
+    private void stackMove(Deque<TreeNode> st, Deque<TreeNode> ts, boolean isAddList, List<Integer> l) {
+        while (!st.isEmpty()) {
+            TreeNode n = st.pop();
+            if (n == null)
+                continue;
+            if (isAddList)
+                l.add(n.val);
+            ts.push(n);
+        }
     }
+    private void tempStackMove(Deque<TreeNode> ts, Deque<TreeNode> st, boolean isAddList, List<Integer> l) {
+        while (!ts.isEmpty()) {
+            TreeNode n = ts.pop();
+            if (n == null)
+                continue;
+            if (isAddList)
+                l.add(n.val);
+            if (n.left != null)
+                st.push(n.left);
+            if (n.right != null)
+                st.push(n.right);
+        }
+    }
+    // public static void main(final String[] args) {
+    //     TreeNode root = new TreeNode(1);
+    //     TreeNode t1 = new TreeNode(2);
+    //     TreeNode t2 = new TreeNode(3);
+    //     TreeNode t3 = new TreeNode(4);
+    //     TreeNode t4 = new TreeNode(5);
+    //     root.left = t1;
+    //     root.right = t2;
+    //     t1.left = t3;
+    //     t2.right = t4;
+    //     new Solution().zigzagLevelOrder(root);
+    // }
 }
 // @lc code=end
