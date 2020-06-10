@@ -3,6 +3,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "questions.ConstructBinaryTreeFromPreorderAndInorderTraversal.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "questions.BinaryTreeZigzagLevelOrderTraversal_0103.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "questions.SymmetricTree_0101.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
             "name": "Debugger (Launch) - Current File",
             "request": "launch",
             "mainClass": "questions.BuddyStrings_0859.Solution",
@@ -90,7 +111,6 @@
             "type": "java",
             "name": "CodeLens (Launch) - Solution",
             "request": "launch",
-            "mainClass": "src.questions.LongestSubstringWithoutRepeatingCharacters.Solution",
             "mainClass": "${file}",
             "vmArgs": "-enableassertions"
         }
