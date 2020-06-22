@@ -1,4 +1,4 @@
-package questions.pathSum;
+package questions.PathSum_0112;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
