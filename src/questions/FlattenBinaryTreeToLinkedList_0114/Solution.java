@@ -56,7 +56,7 @@ import questions.common.TreeNode;
  * = left; this.right = right; } }
  */
 class Solution {
-    public void flatten(TreeNode root) {
+    public void flatten2(TreeNode root) {
         if (root == null) return;
         List<TreeNode> list = new ArrayList<>();
         helper(root, list);
@@ -76,6 +76,57 @@ class Solution {
         helper(node.right, list);
         node.left = null;
         node.right = null;
+    }
+    public void flatten(TreeNode root) {
+        if (root == null)
+            return;
+        helper2(root);
+    }
+    private TreeNode[] helper2(TreeNode node) {
+        if (node == null) {
+            return new TreeNode[] {};
+        }
+        if (node.left == null && node.right == null) {
+            // 叶子节点
+            return new TreeNode[] { node, node };
+        }
+        TreeNode temp = node.right;
+        TreeNode[] leftArr = helper2(node.left);
+        if (leftArr.length != 0) {
+            // 处理左子树
+            node.left = null;
+            node.right = leftArr[0];
+            TreeNode[] rightArr = helper2(temp);
+            if (rightArr.length != 0) {
+                leftArr[1].right = rightArr[0];
+                return new TreeNode[] { node, rightArr[1] };
+            }
+            return new TreeNode[] { node, leftArr[1] };
+        } else {
+            // 没有左子树,返回右子树的结果
+            TreeNode[] rightArr = helper2(node.right);
+            node.right = rightArr[0];
+            return new TreeNode[] { node, rightArr[1] };
+        }
+    }
+    public static void main(String[] args) {
+        /* TreeNode t1 = new TreeNode(1);
+        TreeNode t2 = new TreeNode(2);
+        TreeNode t3 = new TreeNode(3);
+        TreeNode t4 = new TreeNode(4);
+        TreeNode t5 = new TreeNode(5);
+        TreeNode t6 = new TreeNode(6);
+        t1.left = t2;
+        t1.right= t5;
+        t2.left = t3;
+        t2.right = t4;
+        t5.right = t6; */
+        TreeNode t1 = new TreeNode(1);
+        TreeNode t2 = new TreeNode(2);
+        TreeNode t3 = new TreeNode(3);
+        t1.left = t2;
+        t2.left = t3;
+        new Solution().flatten(t1);
     }
 }
 // @lc code=end
