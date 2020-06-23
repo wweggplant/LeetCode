@@ -35,8 +35,27 @@ import questions.common.*;
 
 // @lc code=start
 class Solution {
+    // 动态规划, 整理推导公式 G(n)= i=1∑n ​G(i−1)⋅G(n−i)(3)
+    // https://leetcode-cn.com/problems/unique-binary-search-trees/solution/bu-tong-de-er-cha-sou-suo-shu-by-leetcode/
+    public int numTrees2(int n) {
+        int[] G = new int[n+1];
+        G[0] = 1;
+        G[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                G[i] += G[j - 1] * G[ i - j];
+            }
+        }
+        return G[n];
+    }
+    
+    // 卡塔兰数
     public int numTrees(int n) {
-        return 0;
+        long C = 1; // 用long型防止溢出
+        for (int i = 0; i < n; i++) {
+            C = C * 2 * (2 * i + 1)/(i+2);
+        }
+        return (int) C;
     }
 }
 // @lc code=end
