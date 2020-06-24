@@ -64,7 +64,8 @@ import questions.common.Node;
 
 
 class Solution {
-    public Node connect(Node root) {
+    // 使用队列模拟,层次遍历
+    public Node connect2(Node root) {
         if (root == null) return root;
         Deque<Node> levelList = new LinkedList<>(); // 保存一层的
         levelList.add(root);
@@ -82,6 +83,26 @@ class Solution {
                     levelList.add(current.right);
                 }
             }
+        }
+        return root;
+    }
+    public Node connect(Node root) {
+        if (root == null) {
+            return root;
+        }
+        Node leftmost = root;
+        while (leftmost.left != null) {
+            Node head = leftmost;
+            while (head != null) {
+                // 一个节点内
+                head.left.next = head.right;
+                if (head.next != null) {
+                    head.right.next = head.next.left;
+                }
+                // 相邻节点,next连接
+                head = head.next;
+            }
+            leftmost = leftmost.left;
         }
         return root;
     }
