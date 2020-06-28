@@ -5,6 +5,41 @@
             "type": "java",
             "name": "CodeLens (Launch) - Solution",
             "request": "launch",
+            "mainClass": "questions.SumRootToLeafNumbers_0129.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "questions.PopulatingNextRightPointersInEachNode_0116.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "questions.FlattenBinaryTreeToLinkedList_0114.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "questions.PathSumII_0113.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "questions.ConstructBinaryTreeFromInorderAndPostorderTraversal_0106.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
             "mainClass": "questions.ConstructBinaryTreeFromPreorderAndInorderTraversal.Solution",
             "projectName": "LeetCode_6e5ec086"
         },
