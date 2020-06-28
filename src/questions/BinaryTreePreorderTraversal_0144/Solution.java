@@ -1,6 +1,8 @@
 package questions.BinaryTreePreorderTraversal_0144;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 import questions.common.TreeNode;
@@ -45,9 +47,10 @@ import questions.common.TreeNode;
  */
 class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<>();
-        helper(root, list);
-        return list;
+        // List<Integer> list = new ArrayList<>();
+        // helper(root, list);
+        // return list;
+        return helper2(root);
     }
 
     private void helper(TreeNode node, List<Integer> list) {
@@ -55,6 +58,22 @@ class Solution {
         list.add(node.val);
         helper(node.left, list);
         helper(node.right, list);
+    }
+    // 迭代
+    public List<Integer> helper2(TreeNode node) {
+        List<Integer> list = new ArrayList<>();
+        Deque<TreeNode> deque = new LinkedList<>();
+        if (node != null)
+            deque.add(node);
+        while (!deque.isEmpty()) {
+            TreeNode current = deque.pollLast();
+            list.add(current.val);
+            if (current.right != null)
+                deque.add(current.right);
+            if (current.left != null)
+                deque.offer(current.left);
+        }
+        return list;
     }
 }
 // @lc code=end
