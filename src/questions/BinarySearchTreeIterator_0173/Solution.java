@@ -1,8 +1,10 @@
 package questions.BinarySearchTreeIterator_0173;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
+import java.util.Stack;
 
 import questions.common.TreeNode;
 
@@ -59,7 +61,7 @@ import questions.common.TreeNode;
  * Definition for a binary tree node. public class TreeNode { int val; TreeNode
  * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
-class BSTIterator {
+/* class BSTIterator {
     private Deque<TreeNode> list;
     public BSTIterator(TreeNode root) {
         list = new ArrayDeque<>();
@@ -71,17 +73,42 @@ class BSTIterator {
         list.add(node);
         dfs(node.right);
     }
-    /** @return the next smallest number */
     public int next() {
         return list.poll().val;
     }
 
-    /** @return whether we have a next smallest number */
     public boolean hasNext() {
         return list.peekFirst() != null;
     }
-}
+} */
+// 方法2 使用自定义栈,模仿系统的栈,自定义的栈是可以暂停的,这就达到迭代器的效果
+// 这个栈始终存放的就是中序遍历的路径: 先把嘴左边的路径节点push进去,然后一个节点一个节点回溯,当遇到当前节点有右节点的情况,再套入辅助函数把右子树push到栈里.
+class BSTIterator {
+    Deque<TreeNode> stack;
+    public BSTIterator(TreeNode root) {
+        stack = new ArrayDeque<>();
+        _leftmostInorder(root);
+    }
 
+    private void _leftmostInorder(TreeNode node) {
+        while(node != null) {
+            stack.push(node);
+            node = node.left;
+        }
+    }
+
+    public int next() {
+        TreeNode n = stack.pop();
+        if (n.right != null) {
+            _leftmostInorder(n.right);
+        }
+        return n.val;
+    }
+
+    public boolean hasNext() {
+        return stack.peek() != null;
+    }
+}
 /**
  * Your BSTIterator object will be instantiated and called as such: BSTIterator
  * obj = new BSTIterator(root); int param_1 = obj.next(); boolean param_2 =
