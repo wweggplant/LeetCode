@@ -58,6 +58,10 @@ import questions.common.TreeNode;
  * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 class Solution {
+    /* 
+        注意题目中是二茬搜索树,留意其性质,到达最近祖先节点的条件是,p和q的值卡住当前节点的值,如果都小于当前节点值,则进入左节点,否则进入右节点
+    
+    */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (p.val > q.val) {
             TreeNode temp = p;
