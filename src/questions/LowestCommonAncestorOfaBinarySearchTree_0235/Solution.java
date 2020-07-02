@@ -64,9 +64,10 @@ class Solution {
             p = q;
             q = temp;
         }
-        return helper(root, p,q);
+        // return helper(root, p,q);
+        return helper2(root, p, q);
     }
-
+    // 递归法
     private TreeNode helper(TreeNode node, TreeNode p, TreeNode q) {
         if (node == null) return null;
         if (p.val <= node.val && q.val >= node.val) {
@@ -76,6 +77,21 @@ class Solution {
         }else {
             return helper(node.right, p, q);
         }
+    }
+    // 迭代法, 最后只要找到节点即可,不用模拟堆栈
+    private TreeNode helper2(TreeNode node, TreeNode p, TreeNode q) {
+        int pVal = p.val;
+        int qVal = q.val;
+        while (node != null) {
+            if (node.val > pVal && node.val > qVal) {
+                node = node.left;
+            } else if (node.val < pVal && node.val < qVal) {
+                node = node.right;
+            } else {
+                return node;
+            }
+        }
+        return null;
     }
 }
 // @lc code=end
