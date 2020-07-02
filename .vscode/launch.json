@@ -5,6 +5,13 @@
             "type": "java",
             "name": "CodeLens (Launch) - Solution",
             "request": "launch",
+            "mainClass": "questions.KthSmallestElementInAbst_0230.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
             "mainClass": "questions.SumRootToLeafNumbers_0129.Solution",
             "projectName": "LeetCode_6e5ec086"
         },
