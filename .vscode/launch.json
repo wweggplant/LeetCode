@@ -5,6 +5,34 @@
             "type": "java",
             "name": "CodeLens (Launch) - Solution",
             "request": "launch",
+            "mainClass": "questions.RemoveDuplicatesFromSortedListII_0082.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "questions.PartitionList_0086.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "questions.MergeKSortedLists_0023.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "questions.ReverseNodesInkGroup_0025.Solution",
+            "projectName": "LeetCode_6e5ec086"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
             "mainClass": "questions.KthSmallestElementInAbst_0230.Solution",
             "projectName": "LeetCode_6e5ec086"
         },

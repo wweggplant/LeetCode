@@ -3,7 +3,7 @@ package questions.MaximumDepthOfBinaryTree;
 import java.util.Deque;
 import java.util.LinkedList;
 
-import javafx.util.Pair;
+import questions.common.Pair;
 import questions.common.TreeNode;
 
 /*
